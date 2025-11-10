@@ -1,0 +1,13 @@
+# Raspberry Pi Health Monitor - Python Dependencies
+
+pymongo>=4.6.0
+python-dotenv>=1.0.0
+
+# Installation instructions:
+# pip install -r rpi_requirements.txt
+#
+# Environment variables needed (create .env file):
+# MONGO_URI=mongodb://your-mongodb-uri
+# RPI_DEVICE_ID=rpi-main
+# RPI_UPDATE_INTERVAL=5
+# RPI_BATCH_SIZE=10
