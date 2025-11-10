@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashboard"
 import Reports from "./pages/Reports"
 import AdminLogin from "./pages/AdminLogin"
 import AdminDashboard from "./pages/AdminDashboard"
+import RpiHealthLogs from "./pages/RpiHealthLogs"
 
 // Simple auth check - you might want to replace this with your actual auth logic
 const isAuthenticated = () => {
@@ -27,6 +28,7 @@ function App() {
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/reports" element={<Reports />} />
+          <Route path="/rpi-health" element={<RpiHealthLogs />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           
           {/* Protected Admin Route */}
