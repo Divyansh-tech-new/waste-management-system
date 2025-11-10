@@ -137,7 +137,7 @@ def main():
                 "cpuFrequency": freq,
                 "throttleStatus": throttle_hex,
                 "deviceId": DEVICE_ID,
-                "timestamp": datetime.utcnow(),
+                "timestamp": datetime.now(datetime.UTC) if hasattr(datetime, 'UTC') else datetime.utcnow(),
             }
             
             # Display current status

@@ -38,16 +38,6 @@ const Navbar = () => {
                 : "text-gray-600 hover:text-gray-900"
             }`}
           >
-            Reports
-          </Link>
-          <Link
-            to="/rpi-health"
-            className={`text-sm font-semibold transition-all ${
-              isActive("/rpi-health")
-                ? "text-gray-900 border-b-3 border-[#A8D5A2] pb-1"
-                : "text-gray-600 hover:text-gray-900"
-            }`}
-          >
             RPI Health
           </Link>
           <button
