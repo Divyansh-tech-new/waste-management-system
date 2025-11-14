@@ -14,5 +14,10 @@
       "src": "/(.*)",
       "dest": "/frontend/$1"
     }
-  ]
+  ],
+  "build": {
+    "env": {
+      "REACT_APP_API_URL": "https://waste-management-system-1-uyth.onrender.com"
+    }
+  }
 }
