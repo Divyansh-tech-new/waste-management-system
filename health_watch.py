@@ -19,8 +19,8 @@ load_dotenv()
 # You can change this to 'http://localhost:5000' for local testing
 MONGO_URI = os.getenv('MONGO_URI', 'mongodb+srv://divyansh4078233:Mayanegi@cluster0.spb1r.mongodb.net/waste-management')
 DEVICE_ID = os.getenv('RPI_DEVICE_ID', 'rpi-main')
-UPDATE_INTERVAL = int(os.getenv('RPI_UPDATE_INTERVAL', '5'))  # seconds
-BATCH_SIZE = int(os.getenv('RPI_BATCH_SIZE', '1'))  # Send to DB every N readings (1 = send immediately)
+UPDATE_INTERVAL = int(os.getenv('RPI_UPDATE_INTERVAL', '5'))  # seconds - how often to check metrics
+DB_SEND_INTERVAL = int(os.getenv('RPI_DB_SEND_INTERVAL', '600'))  # seconds - how often to send to DB (default: 10 mins)
 
 # MongoDB connection
 try:
@@ -113,8 +113,8 @@ def main():
     print("🍓 Raspberry Pi Health Monitor - MongoDB Integration")
     print("=" * 70)
     print(f"Device ID: {DEVICE_ID}")
-    print(f"Update Interval: {UPDATE_INTERVAL}s")
-    print(f"Batch Size: {BATCH_SIZE} readings")
+    print(f"Update Interval: {UPDATE_INTERVAL}s (local monitoring)")
+    print(f"DB Send Interval: {DB_SEND_INTERVAL}s ({DB_SEND_INTERVAL/60:.1f} minutes)")
     print(f"Database: {db.name}")
     print("Press Ctrl+C to stop")
     print("=" * 70)
@@ -144,20 +144,22 @@ def main():
             throttle_issues = decode_throttle(throttle_hex)
             status_color = "🟢" if temp < 60 else "🟡" if temp < 75 else "🔴"
             
+            current_time = time.time()
+            time_since_last_send = current_time - last_db_send
+            next_send_in = max(0, DB_SEND_INTERVAL - time_since_last_send)
+            
             print(f"\r{status_color} T={temp:5.1f}°C | Fan={fan:>4} | "
                   f"Freq={freq:4.2f}GHz | Throttle={throttle_hex} | "
-                  f"Issues: {', '.join(throttle_issues[:2]):<30}", 
+                  f"Next DB send: {next_send_in/60:.1f}m", 
                   end="", flush=True)
             
-            reading_count += 1
-            
-            # Send to MongoDB every BATCH_SIZE readings or every 60 seconds
-            current_time = time.time()
-            if reading_count >= BATCH_SIZE or (current_time - last_db_send) >= 60:
+            # Send to MongoDB every DB_SEND_INTERVAL seconds (default: 30 minutes)
+            if time_since_last_send >= DB_SEND_INTERVAL:
                 print()  # New line before DB message
                 if send_to_mongodb(health_data):
                     print(f"✅ Sent to MongoDB at {datetime.now().strftime('%H:%M:%S')}")
-                reading_count = 0
+                    print(f"   Temperature: {temp}°C | Fan: {fan} | Frequency: {freq}GHz")
+                    print(f"   Issues: {', '.join(throttle_issues)}")
                 last_db_send = current_time
             
             time.sleep(UPDATE_INTERVAL)

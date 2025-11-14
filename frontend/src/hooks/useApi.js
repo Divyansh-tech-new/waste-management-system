@@ -1,5 +1,3 @@
-"use client"
-
 import { useState, useCallback } from "react"
 
 // Custom hook for API calls with loading and error states

@@ -1,4 +1,3 @@
-"use client"
 import { Button } from "../ui/button"
 import { Trash2, RefreshCw, Activity } from "lucide-react"
 

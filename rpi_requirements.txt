@@ -1,13 +1,30 @@
-# Raspberry Pi Health Monitor - Python Dependencies
+# Raspberry Pi - Python Dependencies
+# For both health monitoring and camera feed upload
 
-pymongo>=4.6.0
+# HTTP requests for API communication
+requests>=2.31.0
+
+# Environment variable management
 python-dotenv>=1.0.0
+
+# Optional: Direct MongoDB access (not recommended for production)
+# Use API endpoints instead for better architecture
+# pymongo>=4.6.0
 
 # Installation instructions:
 # pip install -r rpi_requirements.txt
 #
 # Environment variables needed (create .env file):
-# MONGO_URI=mongodb://your-mongodb-uri
+#
+# For Health Monitor (health_watch_api.py):
+# API_URL=http://localhost:5000
 # RPI_DEVICE_ID=rpi-main
 # RPI_UPDATE_INTERVAL=5
-# RPI_BATCH_SIZE=10
+# RPI_API_SEND_INTERVAL=600
+#
+# For Camera Feed (camera_feed_uploader.py):
+# API_URL=http://localhost:5000
+# CAMERA_LOCATION=Main Collection Point - IIT Mandi
+# CAMERA_DEVICE_ID=camera-main
+# CAMERA_UPLOAD_INTERVAL=30
+# CAMERA_IMAGE_PATH=/path/to/image.jpg

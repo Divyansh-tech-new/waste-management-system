@@ -31,7 +31,7 @@ const BinCard = ({ bin, index }) => {
     const placeholders = {
       biodegradable: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&h=300&fit=crop",
       "non-biodegradable": "https://images.unsplash.com/photo-1604187351574-c75ca79f5807?w=400&h=300&fit=crop",
-      metal: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=400&h=300&fit=crop",
+      metal: "https://res.cloudinary.com/deqzetctp/image/upload/v1763136251/camera-feeds/eb8azi3nypbmf9slakez.jpg",
       plastic: "https://images.unsplash.com/photo-1621451537084-482c73073a0f?w=400&h=300&fit=crop",
       others: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop",
     }

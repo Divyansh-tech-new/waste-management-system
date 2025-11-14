@@ -30,16 +30,6 @@ const Navbar = () => {
           >
             Dashboard
           </Link>
-          <Link
-            to="/reports"
-            className={`text-sm font-semibold transition-all ${
-              isActive("/reports")
-                ? "text-gray-900 border-b-3 border-[#A8D5A2] pb-1"
-                : "text-gray-600 hover:text-gray-900"
-            }`}
-          >
-            RPI Health
-          </Link>
           <button
             onClick={() => setShowFeedback(true)}
             className="ml-4 px-4 py-2 bg-[#4CAF50] text-white text-sm font-semibold rounded-full hover:bg-[#43A047] transition-colors flex items-center space-x-2"

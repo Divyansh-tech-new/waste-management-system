@@ -59,6 +59,7 @@
     "express-rate-limit": "latest",
     "express-validator": "latest",
     "form-data": "latest",
+    "framer-motion": "^12.23.24",
     "fs": "latest",
     "helmet": "latest",
     "hpp": "latest",

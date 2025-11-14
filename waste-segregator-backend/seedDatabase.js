@@ -24,7 +24,7 @@ const sampleBins = [
     },
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=400&h=300&fit=crop',
+        url: 'https://th.bing.com/th/id/OIP.GjmfozOD7MYZHJnRMiJ8ZAHaE7?w=255&h=180&c=7&r=0&o=7&cb=ucfimg2&pid=1.7&rm=3&ucfimg=1',
         public_id: 'metal_bin_001',
         caption: 'Metal waste bin',
         uploadedAt: new Date()
@@ -51,7 +51,7 @@ const sampleBins = [
     },
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&h=300&fit=crop',
+        url: 'https://th.bing.com/th/id/OIP.wCfjWbpzr3SNn3iTGuHANwHaEJ?w=293&h=180&c=7&r=0&o=7&cb=ucfimg2&pid=1.7&rm=3&ucfimg=1',
         public_id: 'biodegradable_bin_002',
         caption: 'Biodegradable waste bin',
         uploadedAt: new Date()
@@ -78,16 +78,16 @@ const sampleBins = [
     },
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1604187351574-c75ca79f5807?w=400&h=300&fit=crop',
+        url: 'https://th.bing.com/th/id/OIP.X776fJ0xEzTc53Ic0QH3AwHaGD?w=191&h=180&c=7&r=0&o=7&cb=ucfimg2&pid=1.7&rm=3&ucfimg=1',
         public_id: 'non_biodegradable_bin_003',
-        caption: 'Non-biodegradable waste bin',
+        caption: 'Non-biodegradable waste bin with plastic bottles and wrappers',
         uploadedAt: new Date()
       }
     ]
   },
   {
     binId: 'BIN-004',
-    category: 'plastic',
+    category: 'others',
     location: {
       latitude: 40.7128,
       longitude: -74.0060,
@@ -105,9 +105,9 @@ const sampleBins = [
     },
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1621451537084-482c73073a0f?w=400&h=300&fit=crop',
-        public_id: 'plastic_bin_004',
-        caption: 'Plastic waste bin',
+        url: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop',
+        public_id: 'others_bin_004',
+        caption: 'Others waste bin',
         uploadedAt: new Date()
       }
     ]
@@ -116,7 +116,7 @@ const sampleBins = [
 
 const seedDatabase = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI);
+    await mongoose.connect(process.env.MONGODB_URI || process.env.MONGO_URI);
     console.log('✅ Connected to MongoDB');
 
     await Bin.deleteMany({});

@@ -42,6 +42,7 @@ __pycache__/
 env/
 venv/
 .venv/
+*.pyc
 
 # IDE
 .vscode/
@@ -53,3 +54,14 @@ venv/
 # OS
 .DS_Store
 Thumbs.db
+
+# Documentation - exclude from deployment
+*.md
+!README.md
+
+# Test and temporary files
+test_*.py
+fix_*.py
+inspect_*.py
+update_*.py
+Testing.py

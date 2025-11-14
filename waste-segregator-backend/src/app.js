@@ -68,6 +68,7 @@ app.use("/api/pending-actions", require("./routes/pendingActionsRoutes"))
 app.use("/api/team", require("./routes/teamRoutes"))
 app.use("/api/waste-data", require("./routes/wasteDataRoutes"))
 app.use("/api/rpi-health", require("./routes/rpiHealthRoutes"))
+app.use("/api/camera-feed", require("./routes/cameraFeed"))
 
 // fallback 404 — should be before the global error handler
 app.use((req, res, next) => {
