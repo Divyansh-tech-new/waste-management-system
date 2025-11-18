@@ -47,7 +47,7 @@ const FeedbackForm = () => {
 
     setLoading(true)
     try {
-      const response = await axios.post("http://localhost:5000/api/feedback", {
+      const response = await axios.post("https://waste-management-system-1-uyth.onrender.com/api/feedback", {
         userId: formData.userId,
         email: formData.email,
         subject: formData.subject,

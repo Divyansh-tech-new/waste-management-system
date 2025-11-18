@@ -12,7 +12,7 @@ const Reports = () => {
   const [rpiLogs, setRpiLogs] = useState([]);
   const [rpiLoading, setRpiLoading] = useState(true);
   const [latestRpi, setLatestRpi] = useState(null);
-  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+  const API_URL = process.env.REACT_APP_API_URL || "https://waste-management-system-1-uyth.onrender.com";
 
   const fetchData = async () => {
     try {

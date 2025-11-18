@@ -30,7 +30,7 @@ You can update code anytime, and it will auto-deploy to the same URLs!
    ```
    NODE_ENV=production
    PORT=5000
-   MONGODB_URI=mongodb+srv://divyansh4078233:Mayanegi@cluster0.spb1r.mongodb.net/
+   MONGODB_URI=mongodb+srv://divyansh4078233:Mayanegi@cluster0.spb1r.mongodb.net/waste-management
    JWT_SECRET=negiNegi336911#4$1as
    JWT_ACCESS_SECRET=3pFZ9K7rUwD1sLqE8yJbV0nGxHtQzRcM2aNdWfXiP4oT
    JWT_REFRESH_SECRET=X1uQ9mWzV0rK5nF8bJcE7tH2yL6pS3gT4oAqN9vR5dUjY

@@ -53,12 +53,12 @@ function HomePage() {
 
   const fetchData = async () => {
     try {
-      const feedbackResponse = await axios.get("http://localhost:5000/api/feedback")
+      const feedbackResponse = await axios.get("https://waste-management-system-1-uyth.onrender.com/api/feedback")
       if (feedbackResponse.data.success) {
         setFeedback(feedbackResponse.data.data.feedback ? feedbackResponse.data.data.feedback.slice(0, 3) : [])
       }
 
-      const binsResponse = await axios.get("http://localhost:5000/api/bins")
+      const binsResponse = await axios.get("https://waste-management-system-1-uyth.onrender.com/api/bins")
       if (binsResponse.data.success) {
         setBins(
           binsResponse.data.data.map((bin) => ({

@@ -27,7 +27,7 @@ const Dashboard = () => {
   const fetchCameraFeed = async () => {
     try {
       setCameraLoading(true)
-      const response = await axios.get("http://localhost:5000/api/camera-feed/latest")
+      const response = await axios.get("https://waste-management-system-1-uyth.onrender.com/api/camera-feed/latest")
       if (response.data.success) {
         setCameraFeed(response.data.data)
       }
@@ -42,24 +42,14 @@ const Dashboard = () => {
   const fetchRpiHealth = async () => {
     try {
       setRpiLoading(true)
-      const [latestResponse, logsResponse] = await Promise.all([
-        axios.get("http://localhost:5000/api/rpi-health/latest"),
-        axios.get("http://localhost:5000/api/rpi-health?limit=50")
-      ])
-      
-      console.log("🔍 RPI Health API Response:", logsResponse.data)
-      console.log("📊 First 5 logs:", logsResponse.data?.data?.slice(0, 5))
-      
-      // Backend returns { success: true, data: {...} }
-      if (latestResponse.data && latestResponse.data.success && latestResponse.data.data) {
-        setRpiHealth(latestResponse.data.data)
-        console.log("✅ Latest Health:", latestResponse.data.data)
-      }
-      
-      // Backend returns { success: true, data: [...] }
-      if (logsResponse.data && logsResponse.data.success && Array.isArray(logsResponse.data.data)) {
-        setRpiLogs(logsResponse.data.data)
-        console.log("✅ Logs count:", logsResponse.data.data.length)
+      const response = await axios.get("https://waste-management-system-1-uyth.onrender.com/api/rpi-health/latest")
+      if (response.data.success) {
+        setRpiHealth(response.data.data)
+
+        const logsResponse = await axios.get("https://waste-management-system-1-uyth.onrender.com/api/rpi-health/logs?limit=5")
+        if (logsResponse.data.success) {
+          setRpiLogs(logsResponse.data.data)
+        }
       }
     } catch (error) {
       console.error("Error fetching RPI health:", error)
@@ -71,7 +61,7 @@ const Dashboard = () => {
   const fetchFeedback = async () => {
     try {
       setFeedbackLoading(true)
-      const response = await axios.get("http://localhost:5000/api/feedback")
+      const response = await axios.get("https://waste-management-system-1-uyth.onrender.com/api/feedback")
       if (response.data && response.data.data && Array.isArray(response.data.data.feedback)) {
         setFeedback(response.data.data.feedback)
       } else if (Array.isArray(response.data)) {
@@ -107,7 +97,7 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         setLoading(true)
-        const binsResponse = await axios.get("http://localhost:5000/api/bins")
+        const binsResponse = await axios.get("https://waste-management-system-1-uyth.onrender.com/api/bins")
         const binsData = binsResponse.data.data || []
 
         setBins(

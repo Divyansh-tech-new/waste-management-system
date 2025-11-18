@@ -32,7 +32,7 @@ const AdminDashboard = () => {
 
   const fetchCameraFeed = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/admin/settings/camera-feed");
+      const response = await axios.get("https://waste-management-system-1-uyth.onrender.com/api/admin/settings/camera-feed");
       if (response.data.success) {
         setCameraFeed(response.data.data.value);
       }
@@ -48,11 +48,11 @@ const AdminDashboard = () => {
     try {
       // Fetch all data in parallel with Promise.allSettled
       const [imagesRes, actionsRes, teamRes, feedbackRes, wasteRes] = await Promise.allSettled([
-        axios.get("http://localhost:5000/api/images"),
-        axios.get("http://localhost:5000/api/pending-actions"),
-        axios.get("http://localhost:5000/api/team"),
-        axios.get("http://localhost:5000/api/feedback"),
-        axios.get(`http://localhost:5000/api/waste-data/date/${selectedDate}`)
+        axios.get("https://waste-management-system-1-uyth.onrender.com/api/images"),
+        axios.get("https://waste-management-system-1-uyth.onrender.com/api/pending-actions"),
+        axios.get("https://waste-management-system-1-uyth.onrender.com/api/team"),
+        axios.get("https://waste-management-system-1-uyth.onrender.com/api/feedback"),
+        axios.get(`https://waste-management-system-1-uyth.onrender.com/api/waste-data/date/${selectedDate}`)
       ])
 
       // Process images
@@ -122,7 +122,7 @@ const AdminDashboard = () => {
     formData.append("binId", "default-bin")
 
     try {
-      const response = await axios.post("http://localhost:5000/api/images/upload", formData, {
+      const response = await axios.post("https://waste-management-system-1-uyth.onrender.com/api/images/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       })
 
@@ -152,7 +152,7 @@ const AdminDashboard = () => {
     try {
       const adminId = localStorage.getItem("adminId") || "admin-default"
 
-      const response = await axios.post("http://localhost:5000/api/pending-actions", {
+      const response = await axios.post("https://waste-management-system-1-uyth.onrender.com/api/pending-actions", {
         ...newAction,
         createdBy: adminId,
       })
@@ -171,7 +171,7 @@ const AdminDashboard = () => {
 
   const handleDeleteAction = async (actionId) => {
     try {
-      const response = await axios.delete(`http://localhost:5000/api/pending-actions/${actionId}`)
+      const response = await axios.delete(`https://waste-management-system-1-uyth.onrender.com/api/pending-actions/${actionId}`)
       if (response.data.success) {
         setMessage("Action deleted successfully!")
         fetchAllData()
@@ -184,7 +184,7 @@ const AdminDashboard = () => {
 
   const handleDeleteFeedback = async (feedbackId) => {
     try {
-      const response = await axios.delete(`http://localhost:5000/api/feedback/${feedbackId}`)
+      const response = await axios.delete(`https://waste-management-system-1-uyth.onrender.com/api/feedback/${feedbackId}`)
       if (response.data.success) {
         setMessage("Feedback deleted successfully!")
         fetchAllData()
@@ -203,7 +203,7 @@ const AdminDashboard = () => {
 
   const handleDeleteImage = async (imageId) => {
     try {
-      const response = await axios.delete(`http://localhost:5000/api/images/${imageId}`)
+      const response = await axios.delete(`https://waste-management-system-1-uyth.onrender.com/api/images/${imageId}`)
       if (response.data.success) {
         setMessage("Image deleted successfully!")
         fetchAllData()
@@ -310,7 +310,7 @@ const AdminDashboard = () => {
               <Button
                 onClick={async () => {
                   try {
-                    const response = await axios.post("http://localhost:5000/api/admin/settings/camera-feed", { cameraFeedUrl: cameraFeed });
+                    const response = await axios.post("https://waste-management-system-1-uyth.onrender.com/api/admin/settings/camera-feed", { cameraFeedUrl: cameraFeed });
                     if (response.data.success) {
                       setMessage("Camera feed updated successfully!");
                       setTimeout(() => setMessage(""), 3000);

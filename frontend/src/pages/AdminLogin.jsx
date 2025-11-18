@@ -12,18 +12,10 @@ const AdminLogin = () => {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
-  const handleLogin = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setError("")
-    setLoading(true)
-
     try {
-      const response = await axios.post("http://localhost:5000/api/admin/login", {
-        email,
-        password,
-      })
-
-      if (response.data.success) {
+      const response = await axios.post("https://waste-management-system-1-uyth.onrender.com/api/admin/login", {      if (response.data.success) {
         // Store token in localStorage
         localStorage.setItem("adminToken", response.data.data.accessToken)
         localStorage.setItem("adminEmail", response.data.data.admin.email)

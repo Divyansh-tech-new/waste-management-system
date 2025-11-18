@@ -23,7 +23,7 @@ const RpiHealthLogs = () => {
   const [error, setError] = useState(null)
   const [autoRefresh, setAutoRefresh] = useState(true)
 
-  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000"
+  const API_URL = process.env.REACT_APP_API_URL || "https://waste-management-system-1-uyth.onrender.com"
 
   const fetchData = async () => {
     try {

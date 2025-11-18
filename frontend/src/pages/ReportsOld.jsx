@@ -22,7 +22,7 @@ const Reports = () => {
   useEffect(() => {
     const fetchFeedback = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/feedback', {
+        const response = await fetch('https://waste-management-system-1-uyth.onrender.com/api/feedback', {
           credentials: 'include',
           headers: {
             'Accept': 'application/json',
