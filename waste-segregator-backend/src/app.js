@@ -24,12 +24,18 @@ const allowedOrigins = (process.env.FRONTEND_URL || "https://waste-management-sy
   .map((u) => u.trim())
   .filter(Boolean)
 
+console.log("🔐 Allowed CORS Origins:", allowedOrigins)
+
 app.use(
   cors({
     origin: (origin, callback) => {
       // allow requests with no origin (like mobile apps, curl, server-to-server)
       if (!origin) return callback(null, true)
-      if (allowedOrigins.indexOf(origin) !== -1) return callback(null, true)
+      if (allowedOrigins.indexOf(origin) !== -1) {
+        console.log("✅ CORS allowed for origin:", origin)
+        return callback(null, true)
+      }
+      console.log("❌ CORS rejected for origin:", origin)
       return callback(new Error("CORS policy: This origin is not allowed"))
     },
     credentials: true,
